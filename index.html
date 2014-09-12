@@ -1,0 +1,93 @@
+<!--Created by: Cy <3
+(aka: Marnie Tisdale)
+Date Created: 9/11/14
+Last Modified: 9/12/14
+
+Summary: example of a custom styled alert box containing a mortgage calculator based on user input to output monthly payments-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <link href='http://fonts.googleapis.com/css?family=Bree+Serif|Karla|Merriweather+Sans:400,800' rel='stylesheet' type='text/css'>
+    <!--^Google fonts import library-->
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <!--^bootstrap css for the style portion-->
+    <link rel="stylesheet" href="jquery-ui.css">
+    <!--^jQuery css import-->
+    <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+    <!--^my stylesheet for "homegrown" css-->
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <!--^ jQuery import-->
+    <script src="jquery-ui.js"></script>
+    <!--^ jQuery UI manipulation import-->
+    <script src="bootstrap.js" type="text/javascript"></script>
+    <!--^ bootstraps js file import-->
+    <script type="text/javascript" src="script.js"></script>
+    <!--^ my JavaScript/jQuery file for index.html-->
+    
+</head>
+    <body>
+        <!--header-->
+        <div class="header">
+            <div class="container">
+            <center>Customized Dialog With Mortgage Calculator Example</center>
+            </div>
+        </div>
+        
+        <!--this is the 'main' section of the web page-->
+        <div class="jumbotron" id="jumbo">
+            <div class="container">
+                <div class="row">
+                    <center>
+                    <!--buttons on page, onclick event fires the dialog javascript with the text displayed here-->
+                       <button id="btn1" class="mybuttons" onclick="Alert.render()">Click Me!</button>
+                        
+                        <!--these divs hold the custom made dialog box-->
+                        <div id="dialogoverlay"></div><!--controls page bg when box is in effect-->
+                        <div id="dialogbox">
+                            <div>
+                                <div id="dialogboxhead"></div><!--box header-->
+                                <div id="dialogboxbody"><!--dialog box body-->
+                                    <table><!--contains calculator-->
+                                        <tr>
+                                            <td><label for="principle">Loan Principle:</label></td>
+                                            <td><input name="principle" id="principle" type="text"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="rate">Interest Rate:</label></td>
+                                            <td><input name="rate" id="rate" type="text"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="term">Loan Term (in years):</label></td>
+                                            <td><input name="term" id="term" type="text"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td><!--on click, calculates what monthly payments should be-->
+                                            <td><button id="calbtn" onclick="Calc.payments()">Calculate</button><button id="calbtn" onclick="Clear.cleared()">Clear Fields</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="pmt">Monthly Payments:</label></td>
+                                            <td><input id="pmt" name="pmt" type="text"/></td>
+                                        </tr>
+                                    </table>
+                                    <p id="sub" >*This is an estimate only, results may vary based on personal credit</p> 
+                                </div><!--box body-->
+                                <div id="dialogboxfoot"></div><!--box footer-->
+                            </div>
+                        </div><!--end dialog box-->
+                    </center>
+                </div><!--end 'row'-->
+            </div><!--end containter-->
+        </div><!--end jumbotron-->
+         
+        <!--footer-->
+        <div class="footer">
+            <div class="container">
+                <div id="sig" class="pull-left">By: Cy &lt;3</div>
+                <div id="copy" class="pull-right">2014 &copy;</div>
+            </div>    
+        </div>
+    </body>
+</html>
