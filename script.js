@@ -31,7 +31,7 @@ function CustomAlert(){
         document.getElementById('dialogoverlay').style.display = "none";
         
         //clear out calculator values
-        $('#principle').val("");
+        $('#principal').val("");
         $('#rate').val("");
         $('#term').val("");
         $('#pmt').val("");
@@ -48,22 +48,21 @@ function calcMort(){
     
     this.payments = function(){
     //pulls values from user input, turns numeric    
-    var p =  parseFloat($('#principle').val());
-    var r = parseFloat($('#rate').val()/100);
-    var t = parseFloat($('#term').val());
+    var p =  parseFloat($('#principal').val());
+    var r = parseFloat(($('#rate').val()/100)/12);
+    var t = parseFloat($('#term').val()*12);
     
     //verifies user input is numeric
     if ($.isNumeric(p) && $.isNumeric(r) && $.isNumeric(t)) {
-        
-    //    calculates total interest of loan
-    var interest = p * r * t;
-    
-    //calculates total amount owed
-    var total = p + interest;
      
-    //calculates monthly payment to 2 decimals    
-    var pmts = ((total/t)/12).toFixed(2);
-    
+    //calculates monthly mortgage payments
+        var r2 = r + 1;
+        var exponent = Math.pow(r2,t);
+        var top = exponent * r;
+        var bottom = exponent - 1;
+        var N = top/bottom;
+        var pmts = (N * p).toFixed(2);
+//    
     //displays payment in input box
     $('#pmt').val(pmts);
         
@@ -83,7 +82,7 @@ function clearBox() {
     
     this.cleared = function(){
     //clear out calculator values
-        $('#principle').val("");
+        $('#principal').val("");
         $('#rate').val("");
         $('#term').val("");
         $('#pmt').val("");
